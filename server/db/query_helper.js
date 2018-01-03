@@ -8,12 +8,12 @@ var QueryHelper = function(url, collectionName) {
 QueryHelper.prototype = {
   all: function(onQueryFinished){
     MongoClient.connect(this.url, function(err, db){
-      console.log(db)
       if (err) {
         console.error('Could not access DB - MongoClient threw an error:', err.message)
         onQueryfinish({error: 'Could not access database'})
       }
-      var collection = db.collection(this.collectionName)
+      var database = db.db('bucket_list')
+      var collection = database.collection(this.collectionName)
       collection.find().toArray(function(err, docs){
         onQueryFinished(docs)
       })
@@ -22,7 +22,8 @@ QueryHelper.prototype = {
 
   save: function(data, onQueryFinished){
     MongoClient.connect(this.url, function(err, db){
-      var collection = db.collection(this.collectionName)
+      var database = db.db('bucket_list')
+      var collection = database.collection(this.collectionName)
       collection.insert(data)
       collection.find().toArray(function(err, updatedDocs){
         onQueryFinished(updatedDocs)

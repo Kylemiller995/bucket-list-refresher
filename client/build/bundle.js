@@ -60,28 +60,15 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports) {
-
-var capitalise = function (string) {
-  var initial = string[0].toUpperCase()
-  var rest = string.slice(1).toLowerCase()
-  return initial + rest
-}
-
-module.exports = capitalise
-
-
-/***/ }),
-/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var requestHelper = __webpack_require__(2)
-var FormView = __webpack_require__(3)
+var requestHelper = __webpack_require__(1)
+var FormView = __webpack_require__(2)
 var ListView = __webpack_require__(4)
 
 var globalCountries = []
@@ -131,7 +118,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
 
 /***/ }),
-/* 2 */
+/* 1 */
 /***/ (function(module, exports) {
 
 var requestHelper = {}
@@ -167,10 +154,10 @@ module.exports = requestHelper
 
 
 /***/ }),
-/* 3 */
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var capitalise = __webpack_require__(0)
+var capitalise = __webpack_require__(3)
 
 var FormView = function (container) {
   this.form = document.createElement('form')
@@ -253,6 +240,19 @@ FormView.prototype.buildResultsObject = function (inputs) {
 }
 
 module.exports = FormView
+
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports) {
+
+var capitalise = function (string) {
+  var initial = string[0].toUpperCase()
+  var rest = string.slice(1).toLowerCase()
+  return initial + rest
+}
+
+module.exports = capitalise
 
 
 /***/ }),
